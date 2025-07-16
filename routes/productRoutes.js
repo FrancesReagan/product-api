@@ -25,6 +25,15 @@ router.get("/db/seed", async (req, res) => {
     ];
 
     const createdProducts = await Product.insertMany(sampleProducts);
+
+     res
+      .status(201)
+      .json({ message: "Seed successful", products: createdProducts });
+  } catch (error) {
+    res.status(500).json({ message: "Seed failed", error: error.message });
+  }
+});
+
 // POST /api/products (Create a Product)
 // Creates a new product based on the req.body.
 // Responds with the newly created product and a 201 status code.
