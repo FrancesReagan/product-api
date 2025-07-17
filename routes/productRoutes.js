@@ -50,7 +50,7 @@ router.post("/", async (req, res) => {
 // Retrieves a single product by its _id.
 // If the product is found, responds with the product object.
 // If no product is found, responds with a 404 status code.
-router.get("/", async (req, res) => {
+router.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const product = await Product.findById(id);
@@ -115,6 +115,12 @@ router.get("/", async (req, res) => {
   // get the query values//
   const { category, sortBy, minPrice, maxPrice } = req.query;
   let { page, limit } = req.query;
+
+  // these are empty containers that will get filled with instructions for MongoDB//
+  // this creates an empty object that will store my MondDB filter conditions.
+  const query = {};
+  // this creates an empty object that will store my sorting instructions.
+  const sort = {};
 
   // check if the category query was sent or not//
   if(category) {

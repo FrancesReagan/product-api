@@ -23,7 +23,7 @@ app.get("/", async (req, res) => {
 
 //connect to MongoDB and start server//
 connectDB().then(() => {
-  app.listen(PORT, () => console.log(`Server isrunning on port: ${PORT}`));
+  app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));
 }) .catch((err) => {
   console.error(`Failed to start server: ${err}`);
 });
