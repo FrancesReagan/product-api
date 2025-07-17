@@ -50,15 +50,42 @@ router.post("/", async (req, res) => {
 // Retrieves a single product by its _id.
 // If the product is found, responds with the product object.
 // If no product is found, responds with a 404 status code.
-
 router.get("/", async (req, res) => {
   const { id } = req.params;
   try {
-    
+    const product = await Product.findById(id);
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+    res.json(product);
   } catch (error) {
-    
+    console.error(error);
+    res.status(500).json({ message: error.message });
   }
-})
+});
+
+// PUT /api/products/:id (Update a Product)
+// Updates a product by its _id with the data from req.body.
+// Responds with the updated product data (use the { new: true } option).
+// If no product is found to update, responds with a 404 status code.
+router.put("/:id", async (req, res) => {
+  try {
+    const updated = await Product.findByIdAndUpdate(
+      req.params.id, 
+      req.body,
+    { new: true }
+  );
+  if (!updated) {
+    return res.status(404).json({ message: "Product not found" });
+  }
+  res.json(updated);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+  });
+
+
 
 export default router;
 
@@ -72,12 +99,9 @@ export default router;
 
 
 
-// PUT /api/products/:id (Update a Product)
-// Updates a product by its _id with the data from req.body.
-// Responds with the updated product data (use the { new: true } option).
-// If no product is found to update, responds with a 404 status code.
-// DELETE /api/products/:id (Delete a Product)
 
+
+// DELETE /api/products/:id (Delete a Product)
 // Deletes a product by its _id.
 // If successful, responds with a success message.
 // If no product is found to delete, responds with a 404 status code.
