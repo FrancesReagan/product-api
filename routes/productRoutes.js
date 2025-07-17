@@ -3,7 +3,6 @@ import Product from "../models/Product.js";
 
 const router = express.Router();
 
-
 // seeding my product database//
 // Add sample products to database---can also use to make dummy users etc to test //
 // --in routes so don't need to add individually via POST//
@@ -25,7 +24,6 @@ router.get("/db/seed", async (req, res) => {
     ];
 
     const createdProducts = await Product.insertMany(sampleProducts);
-
      res
       .status(201)
       .json({ message: "Seed successful", products: createdProducts });
@@ -38,13 +36,29 @@ router.get("/db/seed", async (req, res) => {
 // Creates a new product based on the req.body.
 // Responds with the newly created product and a 201 status code.
 // If validation fails, it should return a 400 status code with a descriptive error message.
-// 
-// going to seed my database--then use the router post below as functionality to add more products
-router.post("/", async (req, res))
+router.post("/", async (req, res) => {
+  try {
+    const product = await Product.create(req.body);
+    res.status(201).json(product);
+  } catch (error) {
+    console.error("Error creating product: ", error);
+    res.status(400).json({ message: error.message });
+  }
+});
 
+// GET /api/products/:id (Read a Single Product)
+// Retrieves a single product by its _id.
+// If the product is found, responds with the product object.
+// If no product is found, responds with a 404 status code.
 
-
-
+router.get("/", async (req, res) => {
+  const { id } = req.params;
+  try {
+    
+  } catch (error) {
+    
+  }
+})
 
 export default router;
 
@@ -55,10 +69,7 @@ export default router;
 
 
 
-// GET /api/products/:id (Read a Single Product)
-// Retrieves a single product by its _id.
-// If the product is found, responds with the product object.
-// If no product is found, responds with a 404 status code.
+
 
 
 // PUT /api/products/:id (Update a Product)

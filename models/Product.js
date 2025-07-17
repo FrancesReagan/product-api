@@ -30,7 +30,6 @@ const productSchema = new Schema({
 
   tags: [String],
 
-
   createdAt: {
     type:Date,
     default: Date.now
