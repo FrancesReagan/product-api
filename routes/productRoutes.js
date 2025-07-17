@@ -102,7 +102,40 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// GET /api/products (Read All Products with Advanced Querying)
+// This is the most complex endpoint. It should retrieve all products but also support the following optional query parameters:
+// category: Filter products by a specific category.
+// minPrice: Filter products with a price greater than or equal to this value.
+// maxPrice: Filter products with a price less than or equal to this value.
+// sortBy: Sort results. For example, price_asc for ascending price or price_desc for descending price.
+// page & limit: For pagination (defaulting to page 1, limit 10).
+// Dynamically build the Mongoose query based on which query parameters are provided.
+// Respond with an array of the resulting products.
+router.get("/", async (req, res) => {
+  // get the query values//
+  const { category, sortBy, minPrice, maxPrice } = req.query;
+  let { page, limit } = req.query;
 
+  // check if the category query was sent or not//
+  if(category) {
+    query.category = { $eq: category };
+  }
+
+  // handle price range filtering//
+  if(minPrice || maxPrice) {
+    query.price = {};
+    if (minPrice) {
+      // use parseFloat to convert the query parameters which are always strings to numeric values as dealing with numbers and what correct comparsions//
+      query.price.$gte = parseFloat(minPrice);
+    }
+    if (maxPrice) {
+      query.price.$lte = parseFloat(maxPrice);
+    }
+  }
+  if (sortyBy) {
+    
+  }
+})
 
 export default router;
 
@@ -121,12 +154,3 @@ export default router;
 
 
 
-// GET /api/products (Read All Products with Advanced Querying)
-// This is the most complex endpoint. It should retrieve all products but also support the following optional query parameters:
-// category: Filter products by a specific category.
-// minPrice: Filter products with a price greater than or equal to this value.
-// maxPrice: Filter products with a price less than or equal to this value.
-// sortBy: Sort results. For example, price_asc for ascending price or price_desc for descending price.
-// page & limit: For pagination (defaulting to page 1, limit 10).
-// Dynamically build the Mongoose query based on which query parameters are provided.
-// Respond with an array of the resulting products.
