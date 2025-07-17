@@ -187,16 +187,19 @@ export default router;
 
 
 
-// to test I will : 
+// notes for future projects --how to test: 
 // * run seed route first---
 // method: GET
 // URI: http://localhost:3000/api/products/db/seed
 // expected response: 201 status with "seed successful" message and 10 products in database//
 
+// copy one of the _id values from a product in the seeded database---and save it in notepad to use to test for get a single product, 
+// update/put a product, and delete a product//
+
 // *test 5 CRUD routes//
-// *create a POST new product//
-// method: POST
-// URI: http://localhost:3000/api/products
+// CREATE a POST new product//
+// method: POST //
+// URI: http://localhost:3000/api/products //
 // headers: content-type: application/json
 // ..in body {raw JSON} type:
 // {
@@ -207,6 +210,27 @@ export default router;
 //    "inStock": "true",
 //     "tags": ["cooling fan", "LED lighting", "overheating laptops"}
 //  expected: 201 status + created product object//
+
+// READ -- GET a single product//
+// Method: GET//
+// URI: http://localhost:3000/api/products/[put sample id from product from seeded data base here]//
+// note: copy an _id from the seed response to test this//
+// test 404: use fake ID --507f1f77bcf86cd799439011 //
+
+// UPDATE - PUT product//
+// Method: PUT//
+// URI: http://localhost:3000/api/products/[same id from above] //
+// headers: content-type: application/json
+// body: [same update JSON] //
+
+// DELETE -delete product//
+// Method: delete
+// URI: http://localhost:3000/api/products/[same id]
+
+// READ ALL - GET ALL PRODUCTS--ADV queries//
+// Method: GET//
+// URI: http://localhost:3000/api/products
+// [test all the query variations]
 
 
 
