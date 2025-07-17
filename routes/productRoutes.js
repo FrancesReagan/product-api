@@ -187,7 +187,26 @@ export default router;
 
 
 
+// to test I will : 
+// * run seed route first---
+// method: GET
+// URI: http://localhost:3000/api/products/db/seed
+// expected response: 201 status with "seed successful" message and 10 products in database//
 
+// *test 5 CRUD routes//
+// *create a POST new product//
+// method: POST
+// URI: http://localhost:3000/api/products
+// headers: content-type: application/json
+// ..in body {raw JSON} type:
+// {
+//    "name": "Computer fan",
+//    "description": "cooling fan for computer with stand and LED lighting",
+//    "price": 34.99, 
+//    "category": "Electronics",
+//    "inStock": "true",
+//     "tags": ["cooling fan", "LED lighting", "overheating laptops"}
+//  expected: 201 status + created product object//
 
 
 
