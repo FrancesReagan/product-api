@@ -231,6 +231,14 @@ export default router;
 // Method: GET//
 // URI: http://localhost:3000/api/products
 // [test all the query variations]
+// 1. basic -- no filter 
+// method: GET; URI: http://localhost:3000/api/products
+// 2.filter by category ---test URIs: http://localhost:3000/api/products?category=Kitchen; http://localhost:3000/api/products?category=Beauty; http://localhost:3000/api/products?category=Fitness //
+// 3.price filters//
+//  method: GET; URIs: http://localhost:3000/api/products?minPrice=20; http://localhost:3000/api/products?maxPrice=50; http://localhost:3000/api/products?minPrice=10&maxPrice=100
+// 4. sorting filters//
+//  method: GET; URIs: http:
+
 
 
 
