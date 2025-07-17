@@ -85,12 +85,30 @@ router.put("/:id", async (req, res) => {
   }
   });
 
+// DELETE /api/products/:id (Delete a Product)
+// Deletes a product by its _id.
+// If successful, responds with a success message.
+// If no product is found to delete, responds with a 404 status code.
+router.delete("/:id", async (req, res) => {
+  try {
+    const deleted = await Product.findByIdAndDelete(req.params.id);
+    if (!deleted) {
+      return res.status(404).json({ message: "Product not found to be deleted"});
+    }
+    res.json({ message: "Product deleted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 
 
 export default router;
 
 
-// In routes/productRoutes.js, use express.Router() to define your API endpoints. The logic for each route should be handled directly within the route file for this assessment.
+// In routes/productRoutes.js, use express.Router() to define your API endpoints. The logic for each route should be handled directly within the route 
+// file for this assessment.
 
 // Implement the following endpoints. All endpoints must handle potential errors with try...catch blocks and return appropriate status codes and JSON responses.
 
@@ -101,10 +119,7 @@ export default router;
 
 
 
-// DELETE /api/products/:id (Delete a Product)
-// Deletes a product by its _id.
-// If successful, responds with a success message.
-// If no product is found to delete, responds with a 404 status code.
+
 
 // GET /api/products (Read All Products with Advanced Querying)
 // This is the most complex endpoint. It should retrieve all products but also support the following optional query parameters:
