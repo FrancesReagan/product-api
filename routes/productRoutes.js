@@ -188,7 +188,7 @@ export default router;
 
 
 // notes for future projects --how to test: 
-// * run seed route first---
+// * run seed route first---in Postman
 // method: GET
 // URI: http://localhost:3000/api/products/db/seed
 // expected response: 201 status with "seed successful" message and 10 products in database//
@@ -237,7 +237,15 @@ export default router;
 // 3.price filters//
 //  method: GET; URIs: http://localhost:3000/api/products?minPrice=20; http://localhost:3000/api/products?maxPrice=50; http://localhost:3000/api/products?minPrice=10&maxPrice=100
 // 4. sorting filters//
-//  method: GET; URIs: http:
+//  method: GET; URIs: http://localhost:3000/api/products?sortBy=price_asc; http://localhost:3000/api/products?sortBy=price_desc; http://localhost:3000/api/products?sortBy=name_asc;
+//                     htpp://localhost:3000/api/products?sortBy=name_desc //
+// 5.pagination filter//
+// method: GET//
+// URIs: http://localhost:3000/api/products?page=1&limit=5; http://localhost:3000/api/products?page=2&limit=3; http://localhost:3000/api/products?limit=15 //
+// 6. combined filters:
+// method: GET//
+// URIs:http://localhost:3000/api/products?category=Kitchen&sortBy=price_asc; http://localhost:3000/api/products?category=Beauty&minPRice=10&maxPrice=50&sortBy=price_desc;
+//      http://localhost:3000/api/products?category=Fitness&page=1&limit=3&sortyBy=name_asc
 
 
 
