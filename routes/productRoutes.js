@@ -133,19 +133,50 @@ router.get("/", async (req, res) => {
     }
   }
   if (sortBy) {
-    const [field, direction] = sortyBy.split("_");
+    const [field, direction] = sortBy.split("_");
     sort[field] = direction === "asc" ? 1 : -1;
   }
 
-})
+  // set defaults for pagination//
+  //     parseInt--convert to interger --|| 1 if the result is falsy--use 1 instead//
+  // this handles missing, invalid, and or empty values//
+  page = parseInt(page) || 1;
+  limit = parseInt(limit) || 10;
+
+  try {
+    const products = await Product.find(query)
+    // .select --projection to exclude version and id //
+    .select({__v: 0, _id: 0 })
+    // sort results based on the sort object -- if sortBy = "price_asc" --which means sort= { price: 1 } --that is 1=ascending; if sortBy = "price_desc" sort= { price: -1 } --that is  -1=descending price
+    // also another example { name:1 } ---sort by name: A to Z --or sort = { name: -1 } sort by name: Z to A//
+    .sort (sort)
+    // skips a certain number of documents (for pagination) -- example -- for page = 1, limit = 10 -- skip = (1 - 1) * 10 = 0  means skip 0 documents (show first 10);
+    // example 2 -- skip = (2 -1) * 10 = 10 --- for requirement of page = 2, limit = 10 ----so it skips 10 documents (show next 10)//
+    .skip((page - 1) * limit)
+    // limits how many documents to return -- example --- .limit(10) means return max of 10 documents//
+    .limit(limit);
+
+    // example --- URL: /api/products?page=2&limit=5&sortBy=price_asc ----the results are in: 
+    // Product.find(query)
+    // .sort({ price: 1 })  this is sort by price ascending -- 1 means ascending
+    // .skip(5)  this means skip the first 5 products
+    // .limit(5)  this means return next 5 products
+    // this gives me products 6-10, sorted by price low to high//
+
+    // counts how many documents match my query (without pagination)---example totalDocs = 47 --uses same query filter as my main search -- so if query = { category: "Electronics"} 
+    // it counts only electronics products//
+    const totalDocs = await Product.countDocuments(query);
+    // calculates how many pages are needed --- example --- 47 products, 10 per page ---totalPages = Math.ceil(47 / 10) = Math.ceil(4.7) = 5 -- means need5 pages for 47 items//
+    const totalPages = Math.ceil(totalDocs / limit);
+
+    res.json(products);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: error.message });
+  }
+});
 
 export default router;
-
-
-// In routes/productRoutes.js, use express.Router() to define your API endpoints. The logic for each route should be handled directly within the route 
-// file for this assessment.
-
-// Implement the following endpoints. All endpoints must handle potential errors with try...catch blocks and return appropriate status codes and JSON responses.
 
 
 
