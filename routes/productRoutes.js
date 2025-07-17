@@ -132,9 +132,11 @@ router.get("/", async (req, res) => {
       query.price.$lte = parseFloat(maxPrice);
     }
   }
-  if (sortyBy) {
-    
+  if (sortBy) {
+    const [field, direction] = sortyBy.split("_");
+    sort[field] = direction === "asc" ? 1 : -1;
   }
+
 })
 
 export default router;
