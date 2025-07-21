@@ -145,18 +145,18 @@ Use Postman to test API endpoints. Start by running the seed endpoint to populat
 -------------------------------------------------------------------
 _References:_ 
 •	(Express.js Documentation)[https://expressjs.com/] - Web framework for Node.js
-•	Mongoose Documentation - MongoDB object modeling for Node.js
-•	MongoDB Atlas - Cloud database service
-•	Node.js Documentation - JavaScript runtime environment
+•	(Mongoose Documentation)[https://mongoosejs.com/] - MongoDB object modeling for Node.js
+•	(MongoDB Atlas)[https://www.mongodb.com/atlas] - Cloud database service
+
 Tutorials & Guides
-•	RESTful API Design Best Practices - REST API design principles
-•	MongoDB Query Operators - Database querying guide
-•	Express.js Routing Guide - HTTP request routing
-•	Mongoose Schema Validation - Data validation guide
+•	(RESTful API Design Best Practices )[https://restfulapi.net/]- REST API design principles
+•	(MongoDB Query Operators )[https://www.mongodb.com/docs/manual/reference/operator/query/]- Database querying guide
+•	(Express.js Routing Guide )[https://expressjs.com/en/guide/routing.html]- HTTP request routing
+•	(Mongoose Schema Validation )[https://mongoosejs.com/docs/validation.html]- Data validation guide
 Tools
-•	Postman - API testing and development
-•	MongoDB Compass - MongoDB GUI
-•	Nodemon - Development server auto-restart
+•	(Postman )[https://www.postman.com/]- API testing and development
+•	(MongoDB Compass )[https://www.mongodb.com/products/compass]- MongoDB GUI
+•	(Nodemon )[https://nodemon.io/]- Development server auto-restart
 
 
 
