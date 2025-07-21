@@ -187,7 +187,7 @@ export default router;
 
 
 
-// notes for future projects --how to test: 
+// mod 13 SBA product-api notes for future projects --how to test: 
 // * run seed route first---in Postman
 // method: GET
 // URI: http://localhost:3000/api/products/db/seed
