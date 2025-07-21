@@ -46,5 +46,41 @@ Endpoint: /api/products/db/seed
 description: populate database with sample products
 
 ---------------------------------------------------------------
+__Product Schema__
+{
+name: String (required),
+description: String (required),
+price:Number(required, >0),
+category: String(required),
+inStock: Boolean(default:true),
+tags: Array of Strings,
+createdAt: Date(default: now)
+}
+
+------------------------------------------
+Advanced Querying: the GET  /api/products endpoint supports powerful query paramenters: 
+_filtering:_ *category-filter by product category; * minPrice - minimum price filter; *maxPrice - maximum price filter
+_sorting:_ sortBy - sort results (i.e. price_asc, price_desc, name_asc, name_desc)
+_pagination:_ page- page number (default: 1); limit - items per page (default:10)
+
+------------------------------------------------------------
+_Example Usage_
+in Postman
+*Seed database (run first)
+GET /api/products/db/seed
+
+*Create a product
+POST /api/products
+in application---body--raw--json:
+{
+  "name": "wireless headphones",
+  "description: "high-quality wireless headphones with noise cancellation",
+  "price": 199.99,
+  "category": "electronics",
+  "inStock": true,
+  "tags": ["wireless", "audio", "bluetooth"]
+  }
+
+  
 
 
