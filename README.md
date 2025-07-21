@@ -111,6 +111,54 @@ in application: body--raw--json
 
 --------------------------------------------------------------------------------
 
+_Delete a product_
+DELETE  /api/products/product_id_here
+
+_Sample Products(from seed data)_
+the seed endpoint created these products:
+*Air purifer ($125.99) - Home Goods
+*Deep fryer ($69.99) - Kitchen
+*yoga mat ($19.99) - fitness
+*ugg boots ($189.99) - footwear
+*tea kettle ($39.99) - kitchen
+etc..
+
+-------------------------------------------------
+__Product Structure__
+<img width="152" height="257" alt="image" src="https://github.com/user-attachments/assets/e619cf04-7c31-46a7-bff2-4b0d7c2902c7" />
+
+------------------------------------------------------------
+_Tech used_
+*Node.js - runtime environment; *express.js - web framework; *mongoDB - database; *mongoose - mongoDB object modeling;
+*dotenv - environment variable management
+
+------------------------------------------------
+_Error Handling_
+The API includes comprehensive error handling: 
+*201 - created successful POST
+*400 - bad request (validation errors)
+*404 - resource not found
+*500 - internal server error
+--------------------------------------------------------
+_Testing_
+Use Postman to test API endpoints. Start by running the seed endpoint to populate your database with sample data.
+-------------------------------------------------------------------
+_References:_ 
+•	(Express.js Documentation)[https://expressjs.com/] - Web framework for Node.js
+•	Mongoose Documentation - MongoDB object modeling for Node.js
+•	MongoDB Atlas - Cloud database service
+•	Node.js Documentation - JavaScript runtime environment
+Tutorials & Guides
+•	RESTful API Design Best Practices - REST API design principles
+•	MongoDB Query Operators - Database querying guide
+•	Express.js Routing Guide - HTTP request routing
+•	Mongoose Schema Validation - Data validation guide
+Tools
+•	Postman - API testing and development
+•	MongoDB Compass - MongoDB GUI
+•	Nodemon - Development server auto-restart
+
+
 
 
 
