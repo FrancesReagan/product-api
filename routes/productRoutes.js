@@ -124,7 +124,7 @@ router.get("/", async (req, res) => {
 
   // check if the category query was sent or not//
   if(category) {
-    query.category = { $eq: category };
+    query.category = category;
   }
 
   // handle price range filtering//
