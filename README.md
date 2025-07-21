@@ -81,6 +81,39 @@ in application---body--raw--json:
   "tags": ["wireless", "audio", "bluetooth"]
   }
 
+----------------------------------------
+_Get All Products_
+GET  /api/products
+
+_Advanced Filtering Examples_
+#filter by category
+GET  /api/products?category=Electronics
+
+#price range filtering
+GET  /api/products?minPrice=50&maxPrice=200
+
+#sort by price ascending
+GET  /api/products?sortyBy=price_asc
+
+#pagination
+GET  /api/products?page=2&limit=5
+
+#combined filters
+GET  /api/products?category=Electronics&minPrice=100sortBy=price_desc&page=1&limit=10
+
+_Update a product_
+PUT  /api/products/product_id_here
+in application: body--raw--json
+{
+   "price": 179.99,
+   "inStock": false
+}
+
+--------------------------------------------------------------------------------
+
+
+
+
   
 
 
